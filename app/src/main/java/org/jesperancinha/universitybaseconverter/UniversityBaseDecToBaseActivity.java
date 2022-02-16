@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import org.jesperancinha.universitybaseconverter.R;
+
 public class UniversityBaseDecToBaseActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
     private static final int SWIPE_MIN_DISTANCE = 50;
     private static final int SWIPE_MAX_OFF_PATH = 200;

@@ -18,6 +18,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import org.jesperancinha.universitybaseconverter.R;
+
 import org.jesperancinha.universitybaseconverter.helpers.Converter;
 
 import java.util.Locale;
