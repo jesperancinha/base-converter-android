@@ -7,8 +7,11 @@
 
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![base-converter-android](https://github.com/jesperancinha/base-converter-android/actions/workflows/base-converter-android.yml/badge.svg)](https://github.com/jesperancinha/base-converter-android/actions/workflows/base-converter-android.yml)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/02bd514c75d94dc489aa7f86932ffd9e)](https://www.codacy.com/gh/jesperancinha/base-converter-android/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/base-converter-android&amp;utm_campaign=Badge_Grade)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/02bd514c75d94dc489aa7f86932ffd9e)](https://www.codacy.com/gh/jesperancinha/base-converter-android/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/base-converter-android&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/base-converter-android/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/base-converter-android?branch=master)
 [![codecov](https://codecov.io/gh/jesperancinha/base-converter-android/branch/master/graph/badge.svg?token=iWwmGlVpVz)](https://codecov.io/gh/jesperancinha/base-converter-android)
 
