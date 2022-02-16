@@ -13,6 +13,15 @@
 
 ---
 
+An evolution of the previous `University Base Converter` app.
+
+Please read my privacy policy listed in [Privacy Policy](Privacy_Policy.md).
+
+![alt text](app/src/main/res/drawable-xxhdpi/ic_launcher.png "Logo Title Text 1")
+![alt text](app/src/main/res/drawable-xhdpi/ic_launcher.png "Logo Title Text 1")
+![alt text](app/src/main/res/drawable-hdpi/ic_launcher.png "Logo Title Text 1")
+![alt text](app/src/main/res/drawable-mdpi/ic_launcher.png "Logo Title Text 1")
+
 ## Buy me a coffee
 
 I hope you enjoyed this repository. If you did, you can optionally please buy me a coffee, which supports me in constantly improve and make new free content regularly for everyone. Thank you so much!
