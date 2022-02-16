@@ -1,9 +1,6 @@
-package com.joai.universitybaseconverter;
+package org.jesperancinha.universitybaseconverter;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -13,10 +10,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Toast;
 
-public class UniversityBaseDecToBaseActivity extends ActionBarActivity implements GestureDetector.OnGestureListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+public class UniversityBaseDecToBaseActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
     private static final int SWIPE_MIN_DISTANCE = 50;
     private static final int SWIPE_MAX_OFF_PATH = 200;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;

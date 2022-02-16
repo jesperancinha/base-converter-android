@@ -1,9 +1,6 @@
-package com.joai.universitybaseconverter;
+package org.jesperancinha.universitybaseconverter;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -13,13 +10,18 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Toast;
 
-public class UniversityBaseBaseToDecActivity extends ActionBarActivity implements GestureDetector.OnGestureListener{
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import org.jesperancinha.universitybaseconverter.R;
+
+public class UniversityBaseBaseToDecActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
     private static final int SWIPE_MIN_DISTANCE = 50;
     private static final int SWIPE_MAX_OFF_PATH = 200;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class UniversityBaseBaseToDecActivity extends ActionBarActivity implement
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.university_base_base_to_dec, menu);
         return true;
@@ -115,11 +117,12 @@ public class UniversityBaseBaseToDecActivity extends ActionBarActivity implement
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_university_base_base_to_dec, container, false);
             return rootView;
         }
     }
+
     private void onLeftSwipe() {
         Toast t = Toast.makeText(UniversityBaseBaseToDecActivity.this, "Left swipe", Toast.LENGTH_LONG);
         t.show();

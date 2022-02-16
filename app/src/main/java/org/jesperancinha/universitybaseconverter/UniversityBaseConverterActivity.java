@@ -1,23 +1,10 @@
-package com.joai.universitybaseconverter;
-
-import java.util.Locale;
+package org.jesperancinha.universitybaseconverter;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,23 +12,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.joai.universitybaseconverter.helpers.Converter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-public class UniversityBaseConverterActivity extends ActionBarActivity {
+import org.jesperancinha.universitybaseconverter.helpers.Converter;
+
+import java.util.Locale;
+
+public class UniversityBaseConverterActivity extends AppCompatActivity {
     private static final int SWIPE_MIN_DISTANCE = 50;
     private static final int SWIPE_MAX_OFF_PATH = 200;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;
     public static final int MENU_MAIN = 0;
     public static final int MENU_DEC_TO_BASE = 1;
     public static final int MENU_BASE_TO_DEC = 2;
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
     static SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
