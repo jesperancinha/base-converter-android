@@ -5,3 +5,6 @@ build
 dist
 *.apk
 .gradle
+
+## Android
+local.properties
