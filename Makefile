@@ -11,8 +11,6 @@ unpack-reports:
 	mkdir -p jacoco
 	java -jar lib/jacococli.jar report base-converter-android/build/jacoco/testReleaseUnitTest.exec --classfiles base-converter-android/build/.transforms/*/transformed/out/jars/classes.jar --xml jacoco/jacocoRelease.xml
 	java -jar lib/jacococli.jar report base-converter-android/build/jacoco/testDebugUnitTest.exec --classfiles base-converter-android/build/.transforms/*/transformed/out/jars/classes.jar --xml jacoco/jacocoDebug.xml
-upgrade:
-	gradle wrapper --gradle-version 8.0
 coverage:
 	./gradlew clean build test jacocoTestReport
 	./gradlew -i
