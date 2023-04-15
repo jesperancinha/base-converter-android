@@ -12,13 +12,14 @@ task wrapper(type: Wrapper) {
 }
 
 android {
-    compileSdkVersion 33
+    namespace 'org.jesperancinha.universitybaseconverter'
 
     lint {
         baseline = file("lint-baseline.xml")
     }
 
     defaultConfig {
+        compileSdk 33
         minSdkVersion 14
         targetSdkVersion 33
         versionCode 2
