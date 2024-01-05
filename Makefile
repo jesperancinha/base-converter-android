@@ -1,10 +1,14 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.1.1
+GRADLE_VERSION ?= 8.5
 
-b: buildw
+b: build-local
+build-local:
+	gradle
 buildw:
 	./gradlew clean build test jacocoTestReport -i
 	gradle
+wrapper:
+	gradle wrapper
 install-jacococli:
 	wget https://search.maven.org/remotecontent\?filepath\=org/jacoco/jacoco/0.8.7/jacoco-0.8.7.zip
 	unzip remotecontent\?filepath=org%2Fjacoco%2Fjacoco%2F0.8.7%2Fjacoco-0.8.7.zip
@@ -23,8 +27,8 @@ local-pipeline: dependencies lint b
 upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
-	sudo apt upgrade
-	sudo apt update
+	sudo apt upgrade; \
+	sudo apt update; \
 	export SDKMAN_DIR="$(HOME)/.sdkman"; \
 	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]]; \
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
