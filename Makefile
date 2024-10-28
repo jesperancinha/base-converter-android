@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.10.1
+GRADLE_VERSION ?= 8.10.2
 
 b: build-local
 build-local:
@@ -54,7 +54,7 @@ local-pipeline:
 	make lint
 	make b
 deps-plugins-update:
-	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash -s -- $(PARAMS)
 deps-compose-update:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/jetPackComposeUpdatesOne.sh | bash
 deps-gradle-update:
