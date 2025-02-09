@@ -8,3 +8,7 @@ dist
 
 ## Android
 local.properties
+.cxx
+*.iml
+app.iml
+**/*.iml
