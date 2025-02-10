@@ -15,13 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlin.math.abs
 
-class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
+class BaseDecToBaseActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_university_base_base_to_dec)
+        setContentView(R.layout.activity_university_base_dec_to_base)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, PlaceholderFragment())
                 .commit()
         }
@@ -31,7 +31,7 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-        getMenuInflater().inflate(R.menu.university_base_base_to_dec, menu)
+        getMenuInflater().inflate(R.menu.university_base_dec_to_base, menu)
         return true
     }
 
@@ -44,6 +44,20 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    class PlaceholderFragment : Fragment() {
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            val rootView: View =
+                inflater.inflate(R.layout.fragment_university_base_dec_to_base, container, false)
+            return rootView
+        }
     }
 
     override fun onDown(motionEvent: MotionEvent): Boolean {
@@ -69,15 +83,20 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
     override fun onLongPress(motionEvent: MotionEvent) {
     }
 
-    override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, v: Float): Boolean {
+    override fun onFling(
+        e1: MotionEvent?,
+        e2: MotionEvent,
+        velocityX: Float,
+        velocityY: Float
+    ): Boolean {
         try {
             val t: Toast = Toast.makeText(
-                this@UniversityBaseBaseToDecActivity,
+                this@BaseDecToBaseActivity,
                 "Gesture detected",
                 Toast.LENGTH_SHORT
             )
             t.show()
-            val diffAbs: Double = abs((requireNotNull(e1).getY() - e2.getY()).toDouble())
+            val diffAbs: Double = abs((requireNotNull(e1).y - e2.y).toDouble())
             val diff: Float = e1.x - e2.x
 
             if (diffAbs > SWIPE_MAX_OFF_PATH) return false
@@ -86,11 +105,11 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
             if (diff > SWIPE_MIN_DISTANCE
                 && abs(velocityX.toDouble()) > SWIPE_THRESHOLD_VELOCITY
             ) {
-                this@UniversityBaseBaseToDecActivity.onLeftSwipe()
+                this@BaseDecToBaseActivity.onLeftSwipe()
             } else if (-diff > SWIPE_MIN_DISTANCE
                 && abs(velocityX.toDouble()) > SWIPE_THRESHOLD_VELOCITY
             ) {
-                this@UniversityBaseBaseToDecActivity.onRightSwipe()
+                this@BaseDecToBaseActivity.onRightSwipe()
             }
         } catch (e: Exception) {
             Log.e("Home", "Error on gestures")
@@ -98,27 +117,13 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
         return false
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    class PlaceholderFragment : Fragment() {
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View {
-            val rootView: View =
-                inflater.inflate(R.layout.fragment_university_base_base_to_dec, container, false)
-            return rootView
-        }
-    }
-
     private fun onLeftSwipe() {
         val t: Toast =
-            Toast.makeText(this@UniversityBaseBaseToDecActivity, "Left swipe", Toast.LENGTH_LONG)
+            Toast.makeText(this@BaseDecToBaseActivity, "Left swipe", Toast.LENGTH_LONG)
         t.show()
         val go: Intent = Intent(
-            this@UniversityBaseBaseToDecActivity,
-            UniversityBaseConverterActivity::class.java
+            this@BaseDecToBaseActivity,
+            BaseBaseToDecActivity::class.java
         )
         finish()
         startActivity(go)
@@ -126,11 +131,11 @@ class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnG
 
     private fun onRightSwipe() {
         val t: Toast =
-            Toast.makeText(this@UniversityBaseBaseToDecActivity, "Right swipe", Toast.LENGTH_LONG)
+            Toast.makeText(this@BaseDecToBaseActivity, "Right swipe", Toast.LENGTH_LONG)
         t.show()
         val go: Intent = Intent(
-            this@UniversityBaseBaseToDecActivity,
-            UniversityBaseDecToBaseActivity::class.java
+            this@BaseDecToBaseActivity,
+            BaseBaseToDecActivity::class.java
         )
         finish()
         startActivity(go)

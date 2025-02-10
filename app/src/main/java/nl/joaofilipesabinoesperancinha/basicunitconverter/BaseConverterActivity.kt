@@ -24,7 +24,7 @@ import kotlin.CharSequence
 import kotlin.Exception
 import kotlin.Int
 
-class UniversityBaseConverterActivity : AppCompatActivity() {
+class BaseConverterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         counter = 1
         super.onCreate(savedInstanceState)
@@ -225,11 +225,11 @@ class UniversityBaseConverterActivity : AppCompatActivity() {
 
     private fun onLeftSwipe() {
         val t: Toast =
-            Toast.makeText(this@UniversityBaseConverterActivity, "Left swipe", Toast.LENGTH_LONG)
+            Toast.makeText(this@BaseConverterActivity, "Left swipe", Toast.LENGTH_LONG)
         t.show()
         val go: Intent = Intent(
-            this@UniversityBaseConverterActivity,
-            UniversityBaseDecToBaseActivity::class.java
+            this@BaseConverterActivity,
+            BaseDecToBaseActivity::class.java
         )
         finish()
         startActivity(go)
@@ -237,11 +237,11 @@ class UniversityBaseConverterActivity : AppCompatActivity() {
 
     private fun onRightSwipe() {
         val t: Toast =
-            Toast.makeText(this@UniversityBaseConverterActivity, "Right swipe", Toast.LENGTH_LONG)
+            Toast.makeText(this@BaseConverterActivity, "Right swipe", Toast.LENGTH_LONG)
         t.show()
         val go: Intent = Intent(
-            this@UniversityBaseConverterActivity,
-            UniversityBaseDecToBaseActivity::class.java
+            this@BaseConverterActivity,
+            BaseDecToBaseActivity::class.java
         )
         finish()
         startActivity(go)
@@ -263,7 +263,7 @@ class UniversityBaseConverterActivity : AppCompatActivity() {
         var mViewPager: ViewPager? = null
 
 
-        var thisView: UniversityBaseConverterActivity? = null
+        var thisView: BaseConverterActivity? = null
         private var btnMainMenu1: Button? = null
         private var btnMainMenu2: Button? = null
         private var btnGotoDecToBase: Button? = null
