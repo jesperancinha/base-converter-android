@@ -12,3 +12,4 @@ local.properties
 *.iml
 app.iml
 **/*.iml
+*.aab
