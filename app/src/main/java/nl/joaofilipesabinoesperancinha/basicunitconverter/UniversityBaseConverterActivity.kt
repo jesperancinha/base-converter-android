@@ -11,17 +11,20 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import nl.joaofilipesabinoesperancinha.basicunitconverter.tools.Converter.getBaseToDeC
-import nl.joaofilipesabinoesperancinha.basicunitconverter.tools.Converter.getDecToBase
+import nl.joaofilipesabinoesperancinha.basicunitconverter.tools.Converter
 import java.util.Locale
+import java.lang.String
+import kotlin.Boolean
+import kotlin.CharSequence
+import kotlin.Exception
+import kotlin.Int
 
-class UniversityBaseConverterActivity : ComponentActivity() {
+class UniversityBaseConverterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         counter = 1
         super.onCreate(savedInstanceState)
@@ -32,14 +35,11 @@ class UniversityBaseConverterActivity : ComponentActivity() {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = SectionsPagerAdapter(
-            supportFragmentManager
-        )
+        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById<View>(R.id.pager) as ViewPager
-        mViewPager!!.adapter =
-            mSectionsPagerAdapter
+        mViewPager = findViewById<View>(R.id.pager) as ViewPager?
+        mViewPager?.setAdapter(mSectionsPagerAdapter)
         thisView = this
     }
 
@@ -47,7 +47,7 @@ class UniversityBaseConverterActivity : ComponentActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-        menuInflater.inflate(R.menu.university_base_converter, menu)
+        getMenuInflater().inflate(R.menu.university_base_converter, menu)
         return true
     }
 
@@ -75,10 +75,7 @@ class UniversityBaseConverterActivity : ComponentActivity() {
             return PlaceholderFragment.newInstance(position + 1)
         }
 
-        override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
-        }
+        override fun getCount(): Int = 3
 
         override fun getPageTitle(position: Int): CharSequence? {
             val l = Locale.getDefault()
@@ -122,14 +119,16 @@ class UniversityBaseConverterActivity : ComponentActivity() {
                     btnGotoBaseToDec = rootView.findViewById<View>(R.id.btnStartBaseToDec) as Button
                     btnExit = rootView.findViewById<View>(R.id.btnExit) as Button
                     btnGotoDecToBase!!.setOnClickListener {
-                        mViewPager!!.currentItem =
+                        requireNotNull(mViewPager).setCurrentItem(
                             MENU_DEC_TO_BASE
+                        )
                     }
                     btnGotoBaseToDec!!.setOnClickListener {
-                        mViewPager!!.currentItem =
+                        requireNotNull(mViewPager).setCurrentItem(
                             MENU_BASE_TO_DEC
+                        )
                     }
-                    btnExit!!.setOnClickListener { thisView!!.finish() }
+                    btnExit!!.setOnClickListener { thisView?.finish() }
                 }
 
                 2 -> {
@@ -140,8 +139,9 @@ class UniversityBaseConverterActivity : ComponentActivity() {
                     )
                     btnMainMenu1 = rootView.findViewById<View>(R.id.btnMain1) as Button
                     btnMainMenu1!!.setOnClickListener {
-                        mViewPager!!.currentItem =
+                        mViewPager?.setCurrentItem(
                             MENU_MAIN
+                        )
                     }
                     editDec = rootView.findViewById<View>(R.id.editDec) as EditText
                     editBaseDec = rootView.findViewById<View>(R.id.editBaseDec) as EditText
@@ -149,13 +149,12 @@ class UniversityBaseConverterActivity : ComponentActivity() {
                         rootView.findViewById<View>(R.id.btnConvertDecimalToBase) as Button
                     btnResultBase!!.setOnClickListener {
                         try {
-                            textViewBase!!.text =
-                                getDecToBase(
-                                    editDec!!.text.toString()
-                                        .toInt(),
-                                    editBaseDec!!.text.toString()
-                                        .toInt()
-                                )
+                            textViewBase?.text = Converter.getDecToBase(
+                                editDec?.getText()
+                                    .toString().toInt(),
+                                editBaseDec?.getText()
+                                    .toString().toInt()
+                            )
                         } catch (e: Exception) {
                         }
                     }
@@ -171,8 +170,9 @@ class UniversityBaseConverterActivity : ComponentActivity() {
                     )
                     btnMainMenu2 = rootView.findViewById<View>(R.id.btnMain2) as Button
                     btnMainMenu2!!.setOnClickListener {
-                        mViewPager!!.currentItem =
+                        mViewPager?.setCurrentItem(
                             MENU_MAIN
+                        )
                     }
 
                     editNumber = rootView.findViewById<View>(R.id.editNumber) as EditText
@@ -182,14 +182,16 @@ class UniversityBaseConverterActivity : ComponentActivity() {
                         rootView.findViewById<View>(R.id.btnConvertBaseToDecimal) as Button
                     btnResultDec!!.setOnClickListener {
                         try {
-                            textViewDec!!.text =
-                                getBaseToDeC(
-                                    (editNumber!!.text.toString()
+                            textViewDec?.text = String.valueOf(
+                                Converter.getBaseToDeC(
+                                    (editNumber?.getText()
+                                        .toString()
                                         .uppercase(Locale.getDefault())),
-                                    editBaseNumber!!.text.toString()
-                                        .toInt()
-                                ).toString()
-                        } catch (e: Exception) {
+                                    editBaseNumber?.getText()
+                                        .toString().toInt()
+                                )
+                            )
+                        } catch (_: Exception) {
                         }
                     }
 
@@ -213,7 +215,7 @@ class UniversityBaseConverterActivity : ComponentActivity() {
              */
             fun newInstance(sectionNumber: Int): PlaceholderFragment {
                 val fragment = PlaceholderFragment(sectionNumber)
-                val args = Bundle()
+                val args: Bundle = Bundle()
                 args.putInt(ARG_SECTION_NUMBER, sectionNumber)
                 fragment.arguments = args
                 return fragment
@@ -222,10 +224,10 @@ class UniversityBaseConverterActivity : ComponentActivity() {
     }
 
     private fun onLeftSwipe() {
-        val t =
+        val t: Toast =
             Toast.makeText(this@UniversityBaseConverterActivity, "Left swipe", Toast.LENGTH_LONG)
         t.show()
-        val go = Intent(
+        val go: Intent = Intent(
             this@UniversityBaseConverterActivity,
             UniversityBaseDecToBaseActivity::class.java
         )
@@ -234,10 +236,10 @@ class UniversityBaseConverterActivity : ComponentActivity() {
     }
 
     private fun onRightSwipe() {
-        val t =
+        val t: Toast =
             Toast.makeText(this@UniversityBaseConverterActivity, "Right swipe", Toast.LENGTH_LONG)
         t.show()
-        val go = Intent(
+        val go: Intent = Intent(
             this@UniversityBaseConverterActivity,
             UniversityBaseDecToBaseActivity::class.java
         )

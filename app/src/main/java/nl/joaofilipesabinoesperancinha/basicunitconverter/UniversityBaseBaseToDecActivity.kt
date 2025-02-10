@@ -11,18 +11,17 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlin.math.abs
 
-class UniversityBaseBaseToDecActivity : ComponentActivity() {
+class UniversityBaseBaseToDecActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_university_base_base_to_dec)
 
         if (savedInstanceState == null) {
-            fragmentManager.beginTransaction()
+            supportFragmentManager.beginTransaction()
                 .add(R.id.container, PlaceholderFragment())
                 .commit()
         }
@@ -32,7 +31,7 @@ class UniversityBaseBaseToDecActivity : ComponentActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-        menuInflater.inflate(R.menu.university_base_base_to_dec, menu)
+        getMenuInflater().inflate(R.menu.university_base_base_to_dec, menu)
         return true
     }
 
@@ -47,16 +46,39 @@ class UniversityBaseBaseToDecActivity : ComponentActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onDown(motionEvent: MotionEvent): Boolean {
+        return false
+    }
+
+    override fun onShowPress(motionEvent: MotionEvent) {
+    }
+
+    override fun onSingleTapUp(motionEvent: MotionEvent): Boolean {
+        return false
+    }
+
+    override fun onScroll(
+        motionEvent: MotionEvent?,
+        motionEvent2: MotionEvent,
+        v: Float,
+        v2: Float
+    ): Boolean {
+        return false
+    }
+
+    override fun onLongPress(motionEvent: MotionEvent) {
+    }
+
     override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, v: Float): Boolean {
         try {
-            val t = Toast.makeText(
+            val t: Toast = Toast.makeText(
                 this@UniversityBaseBaseToDecActivity,
                 "Gesture detected",
                 Toast.LENGTH_SHORT
             )
             t.show()
-            val diffAbs = abs((requireNotNull(e1).y - e2.y).toDouble()).toFloat()
-            val diff = e1.x - e2.x
+            val diffAbs: Double = abs((requireNotNull(e1).getY() - e2.getY()).toDouble())
+            val diff: Float = e1.x - e2.x
 
             if (diffAbs > SWIPE_MAX_OFF_PATH) return false
 
@@ -79,22 +101,22 @@ class UniversityBaseBaseToDecActivity : ComponentActivity() {
     /**
      * A placeholder fragment containing a simple view.
      */
-    class PlaceholderFragment : android.app.Fragment() {
+    class PlaceholderFragment : Fragment() {
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-        ): View? {
-            val rootView =
+        ): View {
+            val rootView: View =
                 inflater.inflate(R.layout.fragment_university_base_base_to_dec, container, false)
             return rootView
         }
     }
 
     private fun onLeftSwipe() {
-        val t =
+        val t: Toast =
             Toast.makeText(this@UniversityBaseBaseToDecActivity, "Left swipe", Toast.LENGTH_LONG)
         t.show()
-        val go = Intent(
+        val go: Intent = Intent(
             this@UniversityBaseBaseToDecActivity,
             UniversityBaseConverterActivity::class.java
         )
@@ -103,10 +125,10 @@ class UniversityBaseBaseToDecActivity : ComponentActivity() {
     }
 
     private fun onRightSwipe() {
-        val t =
+        val t: Toast =
             Toast.makeText(this@UniversityBaseBaseToDecActivity, "Right swipe", Toast.LENGTH_LONG)
         t.show()
-        val go = Intent(
+        val go: Intent = Intent(
             this@UniversityBaseBaseToDecActivity,
             UniversityBaseDecToBaseActivity::class.java
         )
