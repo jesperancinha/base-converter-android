@@ -5,7 +5,9 @@ b: build-local
 build-local:
 	gradle
 buildw:
-	./gradlew clean build test jacocoTestReport -i
+	./gradlew clean; \
+	./gradlew assembleDebug; \
+	./gradlew build test jacocoTestReport -i; \
 	gradle
 wrapper:
 	gradle wrapper
