@@ -9,8 +9,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:exported="true"
-            android:name="nl.joaofilipesabinoesperancinha.basicunitconverter.UniversityBaseConverterActivity"
-            android:label="@string/app_name">
+            android:name="nl.joaofilipesabinoesperancinha.basicunitconverter.UniversityBaseConverterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
