@@ -10,3 +10,5 @@ dist
 local.properties
 .cxx
 *.iml
+app.iml
+**/*.iml
