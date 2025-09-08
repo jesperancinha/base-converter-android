@@ -54,3 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+kotlin {
+    jvmToolchain(11)
+}
