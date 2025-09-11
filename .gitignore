@@ -13,4 +13,5 @@ local.properties
 app.iml
 **/*.iml
 *.aab
+kotlin-compiler*
 *.cpp
