@@ -27,12 +27,10 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "21"
-    }
+
     buildFeatures {
         prefab = true
     }
@@ -55,6 +53,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-kotlin {
-    jvmToolchain(11)
+tasks.withType<JavaCompile> {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
 }
