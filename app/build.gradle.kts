@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "nl.joaofilipesabinoesperancinha.basicunitconverter"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "nl.joaofilipesabinoesperancinha.basicunitconverter"
-        minSdk = 30
-        targetSdk = 35
+        minSdk = 36
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
